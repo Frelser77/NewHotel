@@ -1,0 +1,45 @@
+﻿@model NewHotel.Models.Servizio
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Servizio</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoServizio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoServizio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Quantita)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quantita)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrezzoTot)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrezzoTot)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataAggiunta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataAggiunta)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdServizio" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+﻿@model List<NewHotel.Models.Servizio>
+@{
+    ViewData["Title"] = "Seleziona Servizio";
+    int idPrenotazione = (int)ViewData["IdPrenotazione"];
+}
+
+<h2>Seleziona un Servizio da Aggiungere</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tipo Servizio</th>
+            <th>Prezzo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var servizio in Model)
+        {
+            <tr>
+                <td>@servizio.TipoServizio</td>
+                <td>@servizio.PrezzoTot.ToString("C")</td>
+                <td>
+                    <form asp-action="AggiungiServizioAllaPrenotazione" method="post">
+                        <input type="hidden" name="idServizioSelezionato" value="@servizio.IdServizio" />
+                        <input type="hidden" name="idPrenotazione" value="@idPrenotazione" />
+                        <button type="submit" class="btn btn-primary">Aggiungi</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

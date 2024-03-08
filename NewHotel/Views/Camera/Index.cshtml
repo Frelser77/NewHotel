@@ -1,0 +1,35 @@
+﻿@model IEnumerable<NewHotel.Models.Camera>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<form asp-action="Index" method="get" class="mb-3 d-flex align-itmes-end">
+    <div class="input-group">
+        <input type="text" name="searchString" class="form-control" placeholder="Search by name or surname..." />
+        <button type="submit" class="btn btn-outline-secondary btn-sm rounded-0">Search</button>
+    </div>
+</form>
+
+<div class="row">
+@foreach (var item in Model) {
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 card-animation" style="width: 18rem;" onclick="toggleCardSize(this)">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.NumeroCamera)</h5>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Descrizione)</p>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.TipoCamera)</p>
+                <a href="@Url.Action("Edit", new { id=item.IdCamera })" class="btn btn-warning">Edit</a>
+                <a href="@Url.Action("Details", new { id=item.IdCamera })" class="btn btn-info">Details</a>
+                <a href="@Url.Action("Delete", new { id=item.IdCamera })" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+}
+</div>

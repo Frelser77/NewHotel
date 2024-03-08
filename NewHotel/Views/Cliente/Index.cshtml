@@ -1,0 +1,57 @@
+﻿@model IEnumerable<NewHotel.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-primary btn-sm rounded-0">Create New</a>
+</p>
+
+<!-- Form per la ricerca -->
+<form asp-action="Index" method="get" class="mb-3 d-flex align-itmes-end">
+    <div class="input-group">
+        <input type="text" name="searchString" class="form-control" placeholder="Search by name or surname..." />
+        <button type="submit" class="btn btn-outline-secondary btn-sm rounded-0">Search</button>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Cognome)</th>
+                <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.CF)</th>
+                <th>@Html.DisplayNameFor(model => model.Citta)</th>
+                <th>@Html.DisplayNameFor(model => model.Provincia)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>@Html.DisplayNameFor(model => model.Telefono)</th>
+                <th>@Html.DisplayNameFor(model => model.Cellulare)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Cognome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CF)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Citta)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Provincia)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Cellulare)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdCliente" class="btn btn-outline-secondary btn-sm rounded-0">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdCliente" class="btn btn-outline-info btn-sm rounded-0">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdCliente" class="btn btn-outline-danger btn-sm rounded-0">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

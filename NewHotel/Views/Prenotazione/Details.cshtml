@@ -1,0 +1,112 @@
+﻿@model NewHotel.Models.Prenotazione
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Prenotazione</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataPrenotazione)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataPrenotazione)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataCheckIn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataCheckIn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DataCheckOut)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataCheckOut)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumeroOspiti)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumeroOspiti)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Acconto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Acconto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PrezzoTotale)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PrezzoTotale)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cliente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cliente.CF)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Camera)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Camera.Descrizione)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdPrenotazione">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+@foreach(var item in Model.Servizi)
+{
+    <div>
+        <h4>Pagamenti</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(modelItem => item.Quantita)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(modelItem => item.Quantita)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(modelItem => item.DataAggiunta)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(modelItem => item.DataAggiunta)
+            </dd>
+            @*<dt class="col-sm-2">
+                @Html.DisplayNameFor(modelItem => item.Prenotazione)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(modelItem => item.Prenotazione)
+            </dd>
+            *@
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(modelItem => item.TipoServizio)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(modelItem => item.TipoServizio)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(modelItem => item.PrezzoTot)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(modelItem => item.PrezzoTot)
+            </dd>
+        </dl>
+    </div>
+}

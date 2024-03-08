@@ -1,0 +1,94 @@
+﻿@model NewHotel.Models.Prenotazione
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Prenotazione</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdCliente" class="control-label"></label>
+                <select asp-for="IdCliente" class ="form-control" asp-items="ViewBag.IdCliente"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCamera" class="control-label"></label>
+                <select asp-for="IdCamera" class ="form-control" asp-items="ViewBag.IdCamera"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdPensione" class="control-label"></label>
+                <select asp-for="IdPensione" class="form-control" asp-items="ViewBag.IdPensione"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DataPrenotazione" class="control-label"></label>
+                <input asp-for="DataPrenotazione" class="form-control" />
+                <span asp-validation-for="DataPrenotazione" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCheckIn" class="control-label"></label>
+                <input asp-for="DataCheckIn" class="form-control" />
+                <span asp-validation-for="DataCheckIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCheckOut" class="control-label"></label>
+                <input asp-for="DataCheckOut" class="form-control" />
+                <span asp-validation-for="DataCheckOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroOspiti" class="control-label"></label>
+                <input asp-for="NumeroOspiti" class="form-control" />
+                <span asp-validation-for="NumeroOspiti" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Acconto" class="control-label"></label>
+                <input asp-for="Acconto" class="form-control" />
+                <span asp-validation-for="Acconto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrezzoTotale" class="control-label"></label>
+                <input asp-for="PrezzoTotale" class="form-control" />
+                <span asp-validation-for="PrezzoTotale" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note" class="control-label"></label>
+                <input asp-for="Note" class="form-control" />
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Esempio di funzione che aggiorna il prezzo totale
+            function aggiornaPrezzo() {
+                // Qui, implementa la logica di calcolo del prezzo
+                // Potrebbe essere necessario effettuare una richiesta AJAX al server per ottenere i dettagli della pensione
+                var prezzoTotale = ...; // Calcola il prezzo totale
+        document.getElementById('PrezzoTotale').value = prezzoTotale; // Aggiorna il campo PrezzoTotale nel form
+          }
+
+        // Aggiungi listener sugli elementi pertinenti
+        document.getElementById('IdPensione').addEventListener('change', aggiornaPrezzo);
+        document.getElementById('DataCheckIn').addEventListener('change', aggiornaPrezzo);
+        document.getElementById('DataCheckOut').addEventListener('change', aggiornaPrezzo);
+        });
+    </script>
+}
